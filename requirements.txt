@@ -1,0 +1,13 @@
+dash-core-components==1.14.0
+dash-html-components==1.1.1
+dash-renderer==1.8.3
+dash-table==4.11.1
+dash==1.18.0; (python_version >= "2.7" and python_full_version < "3.0.0") or (python_full_version >= "3.3.0")
+flask-assets==2.0
+flask-compress==1.8.0; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.3.0"
+flask==1.1.2; (python_version >= "2.7" and python_full_version < "3.0.0") or (python_full_version >= "3.5.0")
+future==0.18.2; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.3.0"
+jinja2==2.11.2; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.5.0"
+numpy==1.19.4; python_version >= "3.6" and python_full_version >= "3.6.1"
+pandas==1.1.5; python_full_version >= "3.6.1"
+plotly==4.14.0; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.3.0"
