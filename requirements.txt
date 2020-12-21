@@ -11,3 +11,4 @@ jinja2==2.11.2; python_version >= "2.7" and python_full_version < "3.0.0" or pyt
 numpy==1.19.4; python_version >= "3.6" and python_full_version >= "3.6.1"
 pandas==1.1.5; python_full_version >= "3.6.1"
 plotly==4.14.0; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.3.0"
+python-dotenv
