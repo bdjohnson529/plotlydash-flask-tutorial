@@ -2,6 +2,14 @@
 from flask import Flask
 from flask_assets import Environment
 
+# Import Dash application
+from .homepage import init_app as init_homepage
+from .inputpage import init_app as init_inputpage1
+from .plotlydash.dashboard1 import init_app as init_dashboard1
+from .plotlydash.dashboard2 import init_app as init_dashboard2
+from .plotlydash.dashboard3 import init_app as init_dashboard3
+from .assets import compile_static_assets
+
 
 def init_app():
     """Construct core Flask application with embedded Dash app."""
@@ -11,22 +19,16 @@ def init_app():
     assets.init_app(app)
 
     with app.app_context():
-        # Import parts of our core Flask app
-        from . import routes
-        from .assets import compile_static_assets
-
-        # Import Dash application
-        from .plotlydash.dashboard1 import init_dashboard1
-        from .plotlydash.dashboard2 import init_dashboard2
-        from .plotlydash.dashboard3 import init_dashboard3
-
-
+        # Initialize pages
+        app = init_homepage(app)
         app = init_dashboard1(app)
         app = init_dashboard2(app)
         app = init_dashboard3(app)
-
+        app = init_inputpage1(app)
 
         # Compile static assets
         compile_static_assets(assets)
+
+
 
         return app

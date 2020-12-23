@@ -1,4 +1,5 @@
-"""Plotly Dash HTML layout override."""
+"""Plotly Dash HTML layout override.
+The header matches the header in the file header.html"""
 
 html_layout = """
 <!DOCTYPE html>

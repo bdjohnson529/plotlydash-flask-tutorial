@@ -1,21 +1,20 @@
 """Instantiate a Dash app."""
 import dash
-from dash.dependencies import Input, Output, State
 import dash_core_components as dcc
 import dash_html_components as html
 import dash_table
 import numpy as np
 import pandas as pd
 
-from .data import create_dataframe, load_dataframe_from_csv
+from .data import create_dataframe
 from .layout import html_layout
 
 
-def init_dashboard3(server):
+def init_app(server):
     """Create a Plotly Dash dashboard."""
     dash_app = dash.Dash(
         server=server,
-        routes_pathname_prefix="/dashboard3/",
+        routes_pathname_prefix="/dashboard2/",
         external_stylesheets=[
             "/static/dist/css/styles.css",
             "https://fonts.googleapis.com/css?family=Lato",
@@ -23,7 +22,7 @@ def init_dashboard3(server):
     )
 
     # Load DataFrame
-    parameters_df = load_dataframe_from_csv("data/input_parameters.csv")
+    df = create_dataframe()
 
     # Custom HTML layout
     dash_app.index_string = html_layout
@@ -31,22 +30,30 @@ def init_dashboard3(server):
     # Create Layout
     dash_app.layout = html.Div(
         children=[
-            create_data_table(parameters_df),
-            html.Button(id='save-button', n_clicks=0, children='Submit')
+            dcc.Graph(
+                id="histogram-graph",
+                figure={
+                    "data": [
+                        {
+                            "x": df["complaint_type"],
+                            "text": df["complaint_type"],
+                            "customdata": df["key"],
+                            "name": "311 Calls by region.",
+                            "type": "histogram",
+                        }
+                    ],
+                    "layout": {
+                        "title": "NYC 311 Calls category.",
+                        "height": 500,
+                        "padding": 150,
+                    },
+                },
+            ),
+            create_data_table(df),
         ],
         id="dash-container",
     )
-
-    @dash_app.callback(
-        Input("save-button", "n_clicks"),
-        State("database-table","data")
-        )
-    def selected_data_to_csv(nclicks, table1):
-        print("Callback**********************************************"*10)
-
     return dash_app.server
-
-
 
 
 def create_data_table(df):
@@ -57,10 +64,6 @@ def create_data_table(df):
         data=df.to_dict("records"),
         sort_action="native",
         sort_mode="native",
-        style_cell_conditional=[
-            {'if': {'column_id': 'Parameter'},
-             'width': '40%'}
-        ],
-        editable=True
+        page_size=300,
     )
     return table

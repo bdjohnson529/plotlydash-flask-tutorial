@@ -10,11 +10,11 @@ from .data import create_dataframe
 from .layout import html_layout
 
 
-def init_dashboard2(server):
+def init_app(server):
     """Create a Plotly Dash dashboard."""
     dash_app = dash.Dash(
         server=server,
-        routes_pathname_prefix="/dashboard2/",
+        routes_pathname_prefix="/dashboard1/",
         external_stylesheets=[
             "/static/dist/css/styles.css",
             "https://fonts.googleapis.com/css?family=Lato",
