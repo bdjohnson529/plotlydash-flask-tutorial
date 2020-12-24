@@ -23,7 +23,7 @@ def init_app(server):
     )
 
     # Load DataFrame
-    parameters_df = load_dataframe_from_csv("data/input_parameters.csv")
+    parameters_df = load_dataframe_from_csv("data/scenario_parameters.csv")
 
     # Custom HTML layout
     dash_app.index_string = html_layout

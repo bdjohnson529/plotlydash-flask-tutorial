@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="card">
+  <h1 class="site-title">{{ title }}</h1>
+  <div>
+  </div>
+  <div>
+    <table>
+      <th></th>
+      {% for rowname, rowdata in data.items() %}
+        {% if loop.index == 1 %}
+          {% for columnname, value in rowdata.items() %}
+            <th>{{ columnname }}</th>
+          {% endfor %}
+        {% endif %}
+      {% endfor %}
+      {% for rowname, rowdata in data.items() %}
+        <tr>
+          <td>{{ rowname }}</td>
+          {% for columnname, value in rowdata.items() %}
+            <td><input value="{{ value }}"></td>
+          {% endfor %}
+        </tr>
+      {% endfor %}
+    </table>
+  </div>
+  <input type = "button" onclick = "submit_form()" value = "Submit" />
+</div>
+{% endblock %}

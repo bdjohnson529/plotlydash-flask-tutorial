@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  function submit_form()
+  {
+    var test = $('form').serializeArray();
+    console.log(test);
+  }
+</script>
+
+
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="card">
+  <h1 class="site-title">{{ title }}</h1>
+  <div>
+  </div>
+  <div>
+    <form action="" method="post">
+      <p>
+        {{ form.scenarioname.label }}
+        {{ form.scenarioname(size=20, value=form.scenarioname.data) }}
+      </p>
+      <p>
+        {{ form.inflationrate.label }}
+        {{ form.inflationrate(size=20, value=form.inflationrate.data) }}
+      </p>
+      <p>
+        {{ form.interestrate.label }}
+        {{ form.interestrate(size=20, value=form.interestrate.data) }}
+      </p>
+      <p>
+        {{ form.startingcash.label }}
+        {{ form.startingcash(size=20, value=form.startingcash.data) }}
+      </p>
+      <p>
+        {{ form.startingdebt.label }}
+        {{ form.startingdebt(size=20, value=form.startingdebt.data) }}
+      </p>
+      <p>
+        {{ form.submit() }}
+      </p>
+  </div>
+</div>
+{% endblock %}

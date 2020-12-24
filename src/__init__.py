@@ -4,7 +4,8 @@ from flask_assets import Environment
 
 # Import Dash application
 from .homepage import init_app as init_homepage
-from .inputpage import init_app as init_inputpage1
+from .tablepage import init_app as init_inputpage1
+from .formpage import init_app as init_inputpage2
 from .plotlydash.dashboard1 import init_app as init_dashboard1
 from .plotlydash.dashboard2 import init_app as init_dashboard2
 from .plotlydash.dashboard3 import init_app as init_dashboard3
@@ -21,10 +22,11 @@ def init_app():
     with app.app_context():
         # Initialize pages
         app = init_homepage(app)
+        app = init_inputpage1(app)
+        app = init_inputpage2(app)
         app = init_dashboard1(app)
         app = init_dashboard2(app)
         app = init_dashboard3(app)
-        app = init_inputpage1(app)
 
         # Compile static assets
         compile_static_assets(assets)

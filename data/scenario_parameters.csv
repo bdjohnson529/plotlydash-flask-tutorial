@@ -1,0 +1,17 @@
+Parameter|Value|ScenarioID
+Inflation Rate|0.02|3
+Interest Rate|0.03|3
+Starting Cash|1000.0|3
+Starting Debt|2000.0|3
+Inflation Rate|0.02|2
+Interest Rate|0.03|2
+Starting Cash|1000.0|2
+Starting Debt|2000.0|2
+Inflation Rate|0.02|2
+Interest Rate|0.03|2
+Starting Cash|1000.0|2
+Starting Debt|2000.0|2
+Inflation Rate|0.02|1
+Interest Rate|0.03|1
+Starting Cash|1000.0|1
+Starting Debt|2000.0|1
